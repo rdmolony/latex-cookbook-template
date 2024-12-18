@@ -7,23 +7,62 @@
 
 A `Latex` template for creating your own cookbook of recipes & an accompanying `nix flake` environment to make it easy to install, use & extend
 
+
 ---
+
 
 ## Install
 
-- Install `nix` via [DeterminateSystems/nix-installer](https://github.com/DeterminateSystems/nix-installer) or ...
+- Install `nix` via ...
+
+
+  - [`DeterminateSystems/nix-installer`](https://github.com/DeterminateSystems/nix-installer) ...
+
+  ```sh
+  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+  ```
+
+
+---
+
+
+## Render a `pdf`
+
+Via ...
+
+
+- [`VSCode`](https://code.visualstudio.com/download) with extension [`James-Yu/LaTeX-Workshop`](https://github.com/James-Yu/LaTeX-Workshop)
+
+  - Open your `.tex` file
+  - Run `Build Latex Project`
+
+
+- `nix` directly
 
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
-  sh -s -- install
+nix run .#latexmk -- \
+  -synctex=1 \
+  -interaction=nonstopmode \
+  -file-line-error \
+  -lualatex \
+  -output-directory=./out \
+  ./Recettes.tex
 ```
 
-- Run ...
+  ... to build & activate this developer environment
+
+
+---
+
+
+## Develop
+
+Create a developer environment (in which all dependencies are installed) via ...
+
+- `nix` directly ...
 
 ```sh
 nix develop
 ```
 
-... to build & activate this developer environment
-
-- (Optional) Install `direnv` via [nix-community/nix-direnv](https://github.com/nix-community/nix-direnv) **to activate this environment automatically on `cd`'ing to this directory**
+- Automatically via `direnv` (or [nix-community/nix-direnv](https://github.com/nix-community/nix-direnv)) **to activate this environment automatically on `cd`'ing to this directory**

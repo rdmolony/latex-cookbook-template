@@ -32,6 +32,12 @@
           git-lfs
         ];
       };
+      apps = {
+        latexmk = {
+          type = "app";
+          program = "${texEnv}/bin/latexmk";
+        };
+      };
     }
   );
 }
