@@ -18,9 +18,11 @@ A `Latex` template for creating your own cookbook of recipes & an accompanying `
 
   - [`DeterminateSystems/nix-installer`](https://github.com/DeterminateSystems/nix-installer) ...
 
+
   ```sh
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
   ```
+
 
 
 ---
@@ -36,6 +38,11 @@ Via ...
   - Open your `.tex` file
   - Run `Build Latex Project`
 
+> [!TIP]
+> How does this work?
+> 
+> - `VSCode` automatically detects the workspace settings for this repo in `.vscode/settings.json`, and registers the tools defined here with the [`James-Yu/LaTeX-Workshop`](https://github.com/James-Yu/LaTeX-Workshop) extension
+> - `.vscode/settings.json` defines a command like `nix run .#latexmk <arguments>` which builds an environment in which all external dependencies are installed before running the command.
 
 - `nix` directly
 
@@ -48,8 +55,6 @@ nix run .#latexmk -- \
   -output-directory=./out \
   ./Recettes.tex
 ```
-
-  ... to build & activate this developer environment
 
 
 ---
@@ -65,4 +70,4 @@ Create a developer environment (in which all dependencies are installed) via ...
 nix develop
 ```
 
-- Automatically via `direnv` (or [nix-community/nix-direnv](https://github.com/nix-community/nix-direnv)) **to activate this environment automatically on `cd`'ing to this directory**
+- Automatically via `direnv` (or [nix-community/nix-direnv](https://github.com/nix-community/nix-direnv)) **to activate this environment on `cd`'ing to this directory**
